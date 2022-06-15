@@ -4,21 +4,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../redux/movies/moviesActions";
 
 function MoviesContainer() {
-  let dispatch=useDispatch()
+  let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMovies()) ;
+    dispatch(fetchMovies());
   }, []);
-  const state = useSelector((state) => state.movies);
-  console.log(state);
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-4">
-          <MovieCard />
+  const { isLoading, movies } = useSelector((state) => state.movies);
+  console.log(movies, isLoading);
+  if (isLoading) {
+    return <h1>Loading.....</h1>;
+  } else if (!isLoading) {
+    return (
+      <div className="container">
+        <div className="row justify-content-center">
+          {movies.map((movie) => {
+            return (
+              <div className="col-md-3 col-sm-6 col-8 " key={movie.id}>
+                <MovieCard movie={movie} />
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default MoviesContainer;

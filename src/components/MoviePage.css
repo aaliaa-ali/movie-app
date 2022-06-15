@@ -1,0 +1,41 @@
+.movie-container {
+  margin-top: 30px;
+}
+
+.overview {
+  font-size: .75rem;
+  font-weight: 500;
+}
+.poster-container {
+  padding: 30px;
+}
+.poster-img {
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+.btn-outline-dark,
+.btn-dark {
+  padding: 2px 20px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+svg {
+  width: 13px !important;
+  margin: 0 2px;
+}
+.genres-name {
+  font-size: .8rem;
+  font-weight: 500;
+}
+.cast-img-container {
+  margin: 10px;
+  background-size: cover;
+  width: 70px;
+  border-radius: 50%;
+  height: 70px;
+}
+.cast-img {
+  width: 50px;
+  border-radius: 50%;
+}

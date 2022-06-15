@@ -7,8 +7,7 @@ export function* getMovies() {
   try {
     const { data } = yield call(fetchBooksApi);
     console.log('data', data)
-    yield put(setMovies(data));
-    if (!data.items) throw new Error("Please Try Another Keyword");
+    yield put(setMovies(data.results));
   } catch (e) {
     yield put(fetchMoviesFalier(e));
   }
