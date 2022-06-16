@@ -40,16 +40,16 @@ function MovieCard(props) {
             starDimension="15px"
             starSpacing="2px"
           />
-          {wishList.includes(id) ? (
+          {wishList.includes(props.movie) ? (
             <FavoriteIcon
               fontSize="large"
               style={{ color: "red" }}
-              onClick={() => dispatch(addToWishList(id))}
+              onClick={() => dispatch(addToWishList(props.movie))}
             />
           ) : (
             <FavoriteIcon
               fontSize="large"
-              onClick={() => dispatch(addToWishList(id))}
+              onClick={() => dispatch(addToWishList(props.movie))}
             />
           )}
         </div>

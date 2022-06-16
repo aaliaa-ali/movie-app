@@ -7,15 +7,15 @@ const wishListhReducer = (state = [], action) => {
   }
 };
 
-const addToWishlist = (id, state) => {
-  if (state.includes(id)) {
+const addToWishlist = (movie, state) => {
+  if (state.includes(movie)) {
     state.splice(
-      state.findIndex((movieId) => movieId === id),
+      state.findIndex((item) => item.id === movie.id),
       1
     );
     return  state=[...state]
   } else {
-    return state.concat([id]);
+    return state.concat([movie]);
   }
 };
 export default wishListhReducer;
