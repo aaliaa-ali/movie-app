@@ -1,16 +1,24 @@
-
-a{
-    text-decoration: none;
-    font-size: .8rem;
-    cursor: pointer;
-    color: lightslategray;
-    font-weight: 400;
+a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: rgb(138, 149, 159);
+  font-weight: 400;
 }
-.card{
-    border:0;
-}
-.card img{
-    border-radius: 7px;
-    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+.card {
+  border: 0;
+  transition: background-color .5s ,transform .5s  ;
+  /* transition: transform .5s  */
 
+}
+.card:hover {
+  background-color: #3c3c3c;
+  cursor: pointer;
+  transform: scale(1.05);
+  z-index: 2;
+
+}
+.card img {
+  border-radius: 7px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
 }

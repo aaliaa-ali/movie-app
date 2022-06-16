@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import "./MoviePage.css";
 import NotStartedIcon from "@mui/icons-material/NotStarted";
@@ -13,7 +13,6 @@ function MoviePage() {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
   console.log("id", id);
-  // const { id } = useParams();
   console.log("id", id);
   const [movie, setMovie] = useState([]);
   const [cast, setCast] = useState([]);
@@ -103,27 +102,30 @@ function MoviePage() {
               })}
             </div>
           </div>
-          <div className="actions d-flex justify-content-between col-lg-8 m-4">
-            <button type="button" class="btn btn-outline-dark">
-              <a className="text-dark" href="https://www.sonicthehedgehogmovie.com">
+          <div className="actions d-flex justify-content-between col-lg-10 col-12 my-4">
+            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
+              <a
+                className="text-dark"
+                href="https://www.sonicthehedgehogmovie.com"
+              >
                 Website
                 <AddLinkIcon></AddLinkIcon>
               </a>
             </button>
-            <button type="button" class="btn btn-outline-dark">
+            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
               IMDB
               <VideoSettingsIcon></VideoSettingsIcon>
             </button>
-            <button type="button" class="btn btn-outline-dark">
+            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
               Trailer
               <PlayArrowIcon></PlayArrowIcon>
             </button>
-            <button type="button" class="btn btn-dark">
-              <Link className="text-light" to="/movie-app">
+            <Link className="text-light" to="/movie-app">
+              <button type="button" className="btn btn-dark px-lg-4 px-sm-3 px-2 py-1">
                 <ArrowBackIcon></ArrowBackIcon>
                 Back
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

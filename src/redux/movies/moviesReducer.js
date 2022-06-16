@@ -9,9 +9,13 @@ const initialState = {
 const moviesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_MOVIES:
-      return {isLoading:true};
+      return { isLoading: true };
     case SET_MOVIES:
-      return { movies: action.payload, isLoading: false };
+      return {
+        movies: action.movies,
+        totalPages: action.totalPages,
+        isLoading: false,
+      };
     case FETCH_MOVIES_FAILD:
       state = {
         error: action.error,

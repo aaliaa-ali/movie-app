@@ -1,0 +1,14 @@
+import React from 'react'
+import MoviesContainer from './MoviesContainer'
+import Search from './Search'
+
+function MainPage() {
+  return (
+    <div>
+        <Search/>
+        <MoviesContainer/>
+    </div>
+  )
+}
+
+export default MainPage

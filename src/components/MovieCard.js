@@ -2,17 +2,27 @@ import React from "react";
 import { Link, useNavigate, createSearchParams } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import "./MovieCard.css";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToWishList,
+  RemoveFromWishList,
+} from "../redux/wishlist/wishListActions";
 
 function MovieCard(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const wishList = useSelector((state) => state.wishList);
 
   const { title, poster_path, rate, id, vote_average } = props.movie;
   const goToMovie = () => {
     navigate({
-      pathname: `/movie/${title}`,
+      pathname: `/movie-app/movie/${title}`,
       search: `?${createSearchParams({ id: id })}`,
     });
   };
+
+
   return (
     <div className="card">
       <img
@@ -22,15 +32,27 @@ function MovieCard(props) {
       />
       <div className="card-body text-center">
         <a className="card-text m-0" onClick={() => goToMovie()}>
-          {/* <Link to={`/movie/${id}`} onClick={()=>goToPosts}>{title}</Link> */}
           {title}
         </a>
-        <br/>
-        <StarRatings
-          rating={vote_average / 2}
-          starDimension="15px"
-          starSpacing="2px"
-        />
+        <div>
+          <StarRatings
+            rating={vote_average / 2}
+            starDimension="15px"
+            starSpacing="2px"
+          />
+          {wishList.includes(id) ? (
+            <FavoriteIcon
+              fontSize="large"
+              style={{ color: "red" }}
+              onClick={() => dispatch(addToWishList(id))}
+            />
+          ) : (
+            <FavoriteIcon
+              fontSize="large"
+              onClick={() => dispatch(addToWishList(id))}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

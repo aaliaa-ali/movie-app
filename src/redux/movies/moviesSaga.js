@@ -1,13 +1,12 @@
 import axios from "axios";
-import { call, put, takeLatest, takeEvery } from "redux-saga/effects";
-// import { setBooks, fetchBooksFail } from "./booksActions";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchMovies, setMovies, fetchMoviesFalier } from "./moviesActions";
 
-export function* getMovies() {
+export function* getMovies(action) {
+
   try {
-    const { data } = yield call(fetchBooksApi);
-    console.log('data', data)
-    yield put(setMovies(data.results));
+    const { data } = yield call(fetchBooksApi, action);
+    yield put(setMovies({movies:data.results ,totalPages:data.total_pages}));
   } catch (e) {
     yield put(fetchMoviesFalier(e));
   }
@@ -16,9 +15,19 @@ export function* mySaga() {
   yield takeLatest("FETCH_MOVIES", getMovies);
 }
 
-function fetchBooksApi() {
-  return axios.request({
-    method: "get",
-    url: `https://api.themoviedb.org/3/movie/popular?api_key=eddd038321981ee2c55617fffd2ddd09`,
-  });
+function fetchBooksApi(action) {
+  console.log('action.searchParam', action.searchKey)
+  if (!action.searchKey) {
+    return axios.request({
+      method: "get",
+      url: `https://api.themoviedb.org/3/movie/popular?api_key=eddd038321981ee2c55617fffd2ddd09&page=${action.pageNum}`,
+    });
+  }else{
+    return axios.request({
+      method: "get",
+      url: `https://api.themoviedb.org/3/search/movie?api_key=eddd038321981ee2c55617fffd2ddd09&page=${action.pageNum}&query=${action.searchKey}`,
+      });
+  }
+  
+
 }

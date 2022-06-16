@@ -15,11 +15,9 @@
 }
 .btn-outline-dark,
 .btn-dark {
-  padding: 2px 20px;
-  border-radius: 15px;
+  border-radius: 25px;
   font-size: 12px;
 }
-
 svg {
   width: 13px !important;
   margin: 0 2px;
