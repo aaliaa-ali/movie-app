@@ -12,9 +12,9 @@ function App() {
       <Header />
       <Routes>
 
-        <Route path="/movie-app/" element={<MainPage />} />
-        <Route path="/movie-app/movie/:title" element={<MoviePage />} />
-        <Route path="/movie-app/wish" element={<WishList />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/movie/:title" element={<MoviePage />} />
+        <Route path="/wish" element={<WishList />} />
       </Routes>
     </HashRouter>
   );
