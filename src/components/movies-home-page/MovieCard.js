@@ -11,7 +11,7 @@ function MovieCard(props) {
 
   const goToMovie = () => {
     navigate({
-      pathname: `/movie/${title}`,
+      pathname: `/movie-app/movie/${title}`,
       search: `?${createSearchParams({ id: id })}`,
     });
   };

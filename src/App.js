@@ -8,12 +8,13 @@ import Header from "./components/Header";
 function App() {
   return (
      
-    <HashRouter basename="/movie-app" >
+    <HashRouter>
       <Header />
       <Routes>
-        <Route path="/" exact  element={<MainPage />} />
-        <Route path="/movie/:title" element={<MoviePage />} />
-        <Route path="/wish" element={<WishList />} />
+
+        <Route path="/movie-app/" element={<MainPage />} />
+        <Route path="/movie-app/movie/:title" element={<MoviePage />} />
+        <Route path="/movie-app/wish" element={<WishList />} />
       </Routes>
     </HashRouter>
   );

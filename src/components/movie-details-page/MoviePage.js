@@ -142,7 +142,7 @@ function MoviePage() {
               Trailer
               <PlayArrowIcon className="svg-small"></PlayArrowIcon>
             </button>
-            <Link className="text-light" to="/">
+            <Link className="text-light" to="/movie-app/">
               <button
                 type="button"
                 className="btn btn-dark px-4  py-1 m-2"
