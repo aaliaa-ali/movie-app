@@ -4,31 +4,29 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 
 function Header() {
   return (
-    <Box sx={{ flexGrow: 1,mb:3 }}>
+    <Box sx={{ flexGrow: 1, mb: 3 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link to="/movie-app">
-            <Button color="inherit">popular Movies</Button>
+          <Link to="/">
+            <Typography
+              sx={{ mx: 2, color: "white", fontSize: 20 }}
+              component="div"
+            >
+              Popular Movies
+            </Typography>
           </Link>
-          <Link to="/movie-app/wish">
-            <Button color="inherit">My Wish List</Button>
+          <Link to="/wish">
+            <Typography
+              sx={{ mx: 2, color: "white", fontSize: 20 }}
+              component="div"
+            >
+              My Wish List
+            </Typography>
           </Link>
-          
         </Toolbar>
       </AppBar>
     </Box>

@@ -21,8 +21,8 @@ function Pagination() {
   });
 
   return (
-    <div className="row d-flex justify-contient-between">
-      <div className="col-12 d-flex justify-content-between">
+    <div className="row ">
+      <div className="col-12 d-flex ">
         {getLast ? (
           <button
             type="button"
@@ -36,7 +36,7 @@ function Pagination() {
         {getNext ? (
           <button
             type="button"
-            className="btn btn-dark"
+            className="btn btn-dark ms-auto"
             onClick={()=> dispatch(nextPage())}
           >
             page {pageNum + 1}

@@ -1,5 +1,5 @@
 import React from "react";
-import MoviesContainer from "./MoviesContainer";
+import MoviesContainer from "./movies-home-page/MoviesContainer";
 import Search from "./Search";
 
 function MainPage() {

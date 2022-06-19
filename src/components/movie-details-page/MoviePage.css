@@ -18,9 +18,12 @@
   border-radius: 25px;
   font-size: 12px;
 }
-svg {
-  width: 13px !important;
-  margin: 0 2px;
+.btn-outline-dark:hover a{
+  color: white !important;
+}
+.svg-small{
+  font-size: 18px !important;
+  margin:0 3px;
 }
 .genres-name {
   font-size: .8rem;

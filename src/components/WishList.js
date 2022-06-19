@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "./movies-home-page/MovieCard";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 function WishList() {
-  const wishList = useSelector((state) => state.wishList);
+  const wishList = useSelector((state) => state.wishList) ;
   console.log("movieList", wishList);
   if (wishList.length < 1) {
     return (

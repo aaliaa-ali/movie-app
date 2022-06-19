@@ -6,9 +6,13 @@ export function* getMovies(action) {
 
   try {
     const { data } = yield call(fetchBooksApi, action);
-    yield put(setMovies({movies:data.results ,totalPages:data.total_pages}));
+    if(data.results.length>0){
+      yield put(setMovies({movies:data.results ,totalPages:data.total_pages}));
+      console.log(data);
+    }
+    else throw new Error('Try Another Search Key Word');
   } catch (e) {
-    yield put(fetchMoviesFalier(e));
+    yield put(fetchMoviesFalier(e.message));
   }
 }
 export function* mySaga() {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../movies-home-page/MovieCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../redux/movies/moviesActions";
-import Pagination from "./Pagination";
+import { fetchMovies } from "../../redux/movies/moviesActions";
+import Pagination from "../Pagination";
 
 function MoviesContainer() {
   const pageNum = useSelector((state) => state.Pagination);
@@ -10,15 +10,24 @@ function MoviesContainer() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovies(pageNum,searchKey));
-  }, [pageNum,searchKey]);
-  const { isLoading, movies, totalPages } = useSelector(
+    dispatch(fetchMovies(pageNum, searchKey));
+  }, [pageNum, searchKey]);
+  const { isLoading, movies, totalPages, error } = useSelector(
     (state) => state.movies
   );
-  
+  console.log("error", error);
+
   if (isLoading) {
-    return <h1>Loading.....</h1>
-  } else if (!isLoading) {
+    return <h1>Loading.....</h1>;
+  } else if (error) {
+    return (
+      <div className="container">
+        <div className="row justify-content-center">
+          <h1 className="text-center">{error}</h1>
+        </div>
+      </div>
+    );
+  } else {
     return (
       <div className="container">
         <div className="row justify-content-center">

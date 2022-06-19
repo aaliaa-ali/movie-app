@@ -8,6 +8,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VideoSettingsIcon from "@mui/icons-material/VideoSettings";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StarRatings from "react-star-ratings";
+import AddToWishList from "../reusable-components/AddToWishList";
 
 function MoviePage() {
   const search = useLocation().search;
@@ -22,12 +23,18 @@ function MoviePage() {
       .get(
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=eddd038321981ee2c55617fffd2ddd09`
       )
-      .then((res) => setCast(res.data.cast));
+      .then((res) => {
+        setCast(res.data.cast);
+        console.log("res.data.cats", res);
+      });
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=eddd038321981ee2c55617fffd2ddd09`
       )
-      .then((res) => setMovie(res.data));
+      .then((res) => {setMovie(res.data)
+        console.log("res", res);
+
+      });
   }, []);
   const {
     title,
@@ -38,6 +45,7 @@ function MoviePage() {
     release_date,
     spoken_languages,
     vote_average,
+    runtime,
   } = movie;
   console.log("movie", movie);
   return (
@@ -50,9 +58,11 @@ function MoviePage() {
           />
         </div>
         <div className="col-lg-8 col-md-6 col-10">
-          <p className="display-5 mb-0">{title}</p>
+          <p className="display-5 mb-0">
+            {title} <AddToWishList movie={movie} />
+          </p>
           <p className="fw-bolder fs-6">{tagline}</p>
-          <div className="d-flex justify-content-between">
+          <div className="d-sm-flex justify-content-between">
             <div>
               <StarRatings
                 rating={(vote_average | 0) / 2}
@@ -61,10 +71,12 @@ function MoviePage() {
               />
               <span>{vote_average}</span>
             </div>
-            <p>
+            <p className="text-secondary  fs-6">
               {spoken_languages?.map((lang) => {
                 return <span key={lang.name}>{lang.name}/</span>;
               })}
+              {runtime} min/
+              {release_date?.substring(0, release_date.indexOf("-"))}
             </p>
           </div>
           <div>
@@ -73,7 +85,7 @@ function MoviePage() {
               {genres?.map((genre) => {
                 return (
                   <p className="px-1 genres-name" key={genre.id}>
-                    <NotStartedIcon></NotStartedIcon>
+                    <NotStartedIcon className="svg-small"></NotStartedIcon>
                     {genre.name}
                   </p>
                 );
@@ -90,6 +102,7 @@ function MoviePage() {
               {cast.slice(0, 5)?.map((memper) => {
                 return (
                   <div
+                    key={memper.id}
                     className="cast-img-container"
                     style={{
                       backgroundImage:
@@ -102,27 +115,39 @@ function MoviePage() {
               })}
             </div>
           </div>
-          <div className="actions d-flex justify-content-between col-lg-10 col-12 my-4">
-            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
+          <div className="actions  col-lg-10 col-12 ">
+            <button
+              type="button"
+              className="btn btn-outline-dark px-4  py-1 m-2"
+            >
               <a
                 className="text-dark"
                 href="https://www.sonicthehedgehogmovie.com"
               >
                 Website
-                <AddLinkIcon></AddLinkIcon>
+                <AddLinkIcon className="svg-small"></AddLinkIcon>
               </a>
             </button>
-            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
+            <button
+              type="button"
+              className="btn btn-outline-dark px-4  py-1 m-2"
+            >
               IMDB
-              <VideoSettingsIcon></VideoSettingsIcon>
+              <VideoSettingsIcon className="svg-small"></VideoSettingsIcon>
             </button>
-            <button type="button" className="btn btn-outline-dark px-lg-4 px-sm-3 px-2 py-1">
+            <button
+              type="button"
+              className="btn btn-outline-dark px-4  py-1 m-2"
+            >
               Trailer
-              <PlayArrowIcon></PlayArrowIcon>
+              <PlayArrowIcon className="svg-small"></PlayArrowIcon>
             </button>
-            <Link className="text-light" to="/movie-app">
-              <button type="button" className="btn btn-dark px-lg-4 px-sm-3 px-2 py-1">
-                <ArrowBackIcon></ArrowBackIcon>
+            <Link className="text-light" to="/">
+              <button
+                type="button"
+                className="btn btn-dark px-4  py-1 m-2"
+              >
+                <ArrowBackIcon className="svg-small"></ArrowBackIcon>
                 Back
               </button>
             </Link>
