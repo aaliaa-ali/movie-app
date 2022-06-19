@@ -1,4 +1,4 @@
-import {  Routes, Route,HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import "./App.css";
 import MoviePage from "./components/movie-details-page/MoviePage";
 import MainPage from "./components/MainPage";
@@ -7,11 +7,9 @@ import Header from "./components/Header";
 
 function App() {
   return (
-     
     <HashRouter>
       <Header />
       <Routes>
-
         <Route path="/" element={<MainPage />} />
         <Route path="/movie/:title" element={<MoviePage />} />
         <Route path="/wish" element={<WishList />} />
