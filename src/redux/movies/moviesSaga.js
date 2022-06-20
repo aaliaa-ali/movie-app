@@ -8,7 +8,6 @@ export function* getMovies(action) {
     const { data } = yield call(fetchBooksApi, action);
     if(data.results.length>0){
       yield put(setMovies({movies:data.results ,totalPages:data.total_pages}));
-      console.log(data);
     }
     else throw new Error('Try Another Search Key Word');
   } catch (e) {
@@ -20,7 +19,6 @@ export function* mySaga() {
 }
 
 function fetchBooksApi(action) {
-  console.log('action.searchParam', action.searchKey)
   if (!action.searchKey) {
     return axios.request({
       method: "get",
@@ -32,6 +30,5 @@ function fetchBooksApi(action) {
       url: `https://api.themoviedb.org/3/search/movie?api_key=eddd038321981ee2c55617fffd2ddd09&page=${action.pageNum}&query=${action.searchKey}`,
       });
   }
-  
-
 }
+
